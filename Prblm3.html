@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prbm 3</title>
+</head>
+<body>
+  <p>
+    Part1: Using let variable<br>
+    Here accessing the variable, without declaring the variable it immediately throws Reference Error.
+    Hence declare the variable and then accessing it gives 'Undefined' value.
+    let mysteryVariable = 20; inside the function is <strong>block scoped</strong>.
+    It gets hoisted, but remains in the Temporal Dead Zone until its declaration is reached.
+  </p>
+  <p>
+    Part2: Explanation
+
+  </p>
+  <script>
+    let mysteryVariable;
+    console.log(mysteryVariable);
+    mysteryVariable = 10;
+    console.log(mysteryVariable);
+    function revealMystery() {
+      console.log("Inside revealMystery:", mysteryVariable);
+      var mysteryVariable = 20;
+      console.log("Inside revealMystery (after declaration):", mysteryVariable);
+    }
+    revealMystery();
+    console.log("After revealMystery:", mysteryVariable);
+    </script>
+</body>
+</html>
