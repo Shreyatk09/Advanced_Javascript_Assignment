@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //with regular function where this inside a function doesn't belong to user. It belongs to browser or window or undefined.
+    //reason: It depends on the setTimeout function i.e regular function. Now the value this inside regular functions depends on How the function is called and not how its written.
+    const person = {
+  name: "Charlie",
+  greet: function() {
+    setTimeout(function() {
+      console.log(`Hello, ${this.name}!`); // 'this' is NOT 'person'
+    }, 1000);
+  }
+};
+
+person.greet(); // Output: Hello, undefined! (or error in strict mode)
+
+
+//It can resolved using Arrow function, this arrow function doesn't own its own this rather it inherits this from the outer scope(greetDelayed method).
+    //corrected version
+    const personFixed = {
+    name: "Charlie",
+    greetDelayed: function() {
+      setTimeout(() => {
+        console.log(`Hello, ${this.name}!`); // 'this' correctly refers to 'personFixed'
+      }, 1000);
+    }
+  };
+
+  personFixed.greetDelayed(); // Output: Hello, Charlie!
+
+  </script>
+</body>
+</html>
